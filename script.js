@@ -11,10 +11,17 @@ function startCountdown() {
       counting.innerHTML = 'promo has ended';
     } else {
       promoTime--;
-      const days = Math.floor(totalSeconds / 3600 / 24);
-      const hours = Math.floor(totalSeconds / 3600) % 24;
-      const min = Math.floor(totalSeconds / 60) % 60;
-      const sec = Math.floor(totalSeconds) % 60;
+      const hours = Math.floor(promoTime / 3600) % 24;
+      const min = Math.floor(promoTime / 60) % 60;
+      const sec = Math.floor(promoTime) % 60;
+
+      counting.innerHTML = `Time: ${format(hours)}hr : ${format(min)}min : ${format(sec)} `;
     }
   }, 1000);
 }
+
+function format(t) {
+  return t < 10 ? `0${t}` : t;
+}
+
+startCountdown();
